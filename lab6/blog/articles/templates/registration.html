@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+
+    <link rel="stylesheet" href="{% static 'css/article.css' %}">
+    <link rel="stylesheet" href="{% static 'css/create_post.css' %}">
+</head>
+<body class="article registration">
+    <div class="header">
+        <img src="{% static 'img/logo.png' %}" alt="Логотип блога">
+        <a href="{% url 'archive' %}">Все записи</a>
+    </div>
+
+    <div class="content">
+        <h1 class="post-title">Регистрация</h1>
+
+        {% for message in messages %}
+            <p class="form-success" role="status">
+                {{ message }}
+            </p>
+        {% endfor %}
+
+        <form method="POST" class="post-form" novalidate>
+            {% csrf_token %}
+					
+
+            <p>
+                <label for="username">Логин</label><br>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    maxlength="150"
+                    autocomplete="username"
+                    placeholder="Придумайте логин"
+                    value="{{ form.username }}"
+                >
+            </p>
+
+            <p>
+                <label for="email">Email</label><br>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    autocomplete="email"
+                    placeholder="Введите email"
+                    value="{{ form.email }}"
+                >
+            </p>
+
+            <p>
+                <label for="password">Пароль</label><br>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    autocomplete="new-password"
+                    placeholder="Придумайте пароль"
+                >
+            </p>
+
+            {% if form.errors %}
+                <p class="form-error" role="alert">
+                    {{ form.errors }}
+                </p>
+            {% endif %}
+
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+		<p>
+    Уже есть аккаунт?
+    <a class="auth-link" href="{% url 'login' %}">Войти</a>
+        </p>
+    </div>
+</body>
+</html>
