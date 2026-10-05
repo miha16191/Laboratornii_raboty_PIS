@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход в блог</title>
+
+    <link rel="stylesheet" href="{% static 'css/article.css' %}">
+    <link rel="stylesheet" href="{% static 'css/create_post.css' %}">
+</head>
+<body class="article login-page">
+    <div class="header">
+        <img src="{% static 'img/logo.png' %}" alt="Логотип блога">
+        <a href="{% url 'archive' %}">Все записи</a>
+    </div>
+
+    <div class="content">
+        <h1 class="post-title">Вход в блог</h1>
+
+        <form method="POST" class="post-form" novalidate>
+            {% csrf_token %}
+
+            <p>
+                <label for="username">Логин</label><br>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    autocomplete="username"
+                    value="{{ form.username }}"
+                    placeholder="Введите логин"
+                >
+            </p>
+
+            <p>
+                <label for="password">Пароль</label><br>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    autocomplete="current-password"
+                    placeholder="Введите пароль"
+                >
+            </p>
+
+            {% if form.errors %}
+                <p class="form-error" role="alert">
+                    {{ form.errors }}
+                </p>
+            {% endif %}
+
+            <button type="submit">Войти</button>
+        </form>
+
+        <p>
+            Нет аккаунта?
+            <a class="auth-link" href="{% url 'register' %}">
+                Зарегистрироваться
+            </a>
+        </p>
+    </div>
+</body>
+</html>

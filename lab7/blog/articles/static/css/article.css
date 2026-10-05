@@ -1,0 +1,185 @@
+body {
+    margin: 0;
+    background: #1abc9c;
+    font-family: Tahoma, Arial, sans-serif;
+    color: #ffffff;
+}
+
+.header,
+body.archive > .archive,
+body.article > .content {
+    width: 960px;
+    max-width: calc(100% - 40px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header {
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.header img {
+    display: block;
+    width: 318px;
+    height: auto;
+}
+
+body.archive .header img {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body.article .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+body.article .header img {
+    max-width: 65%;
+}
+
+.header a {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.post-title {
+    margin: 0 0 18px;
+    font-size: 28px;
+}
+
+.post-title a {
+    color: #ffffff;
+}
+
+body.article .post-title {
+    font-size: 32px;
+}
+
+.article-author {
+    width: 50%;
+    float: left;
+    font-weight: bold;
+}
+
+.article-created-date {
+    text-align: right;
+    font-style: italic;
+}
+
+.article-info::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.article-text {
+    margin-top: 18px;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+}
+
+.one-post {
+    margin-bottom: 45px;
+}
+
+body.article > .content {
+    margin-bottom: 40px;
+}
+
+.archive-actions {
+    margin-bottom: 30px;
+    text-align: right;
+}
+
+.archive-actions a {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.header-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+/* В архиве ссылки находятся справа над логотипом */
+body.archive .header {
+    position: relative;
+    padding-top: 45px;
+}
+
+body.archive .header-links {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.current-user {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.logout-form {
+    margin: 0;
+}
+
+.logout-form button {
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.auth-link {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.post-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 18px;
+}
+
+.post-heading .post-title {
+    margin-bottom: 0;
+}
+
+.fold-button {
+    flex-shrink: 0;
+    padding: 6px 10px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    background: transparent;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.fold-button:hover {
+    background: #117864;
+}
+
+.one-post.folded .article-author,
+.one-post.folded .article-created-date,
+.one-post.folded .article-text {
+    display: none;
+}

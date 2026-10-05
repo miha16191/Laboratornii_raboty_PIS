@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.title }}</title>
+	<link rel="stylesheet" href="{% static 'css/article.css' %}">
+</head>
+<body class="article">
+    <div class="header">
+    <img src="{% static 'img/logo.png' %}" alt="Логотип блога">
+
+    <div class="header-links">
+        <a href="{% url 'archive' %}">Все записи</a>
+        {% include 'auth_links.html' %}
+    </div>
+</div>
+
+    <div class="content">
+        <h1 class="post-title">{{ post.title }}</h1>
+
+        <div class="article-info">
+            <div class="article-author">
+                {{ post.author.username }}
+            </div>
+
+            <div class="article-created-date">
+                {{ post.created_date }}
+            </div>
+        </div>
+
+        <p class="article-text">{{ post.text|linebreaksbr }}</p>
+    </div>
+</body>
+</html>
